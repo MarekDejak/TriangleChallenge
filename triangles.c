@@ -1,3 +1,4 @@
+#define CHUNK 16 //size of the smallest allocated mem for text
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -19,7 +20,7 @@ int main(void)
 	
 	printf("\nThe triangle is %s",decideTriangle(a,b,c));
 	
-	free(a); free(b); free(c);
+	free(a); free(b); free(c); //freeing up the memory for strings allocated in getSide
 	return 0;
 }
 
@@ -108,14 +109,14 @@ char *getString(FILE* fp){
 	
 	char *str;
 	int ch;
-	size_t size = 16; //initial size
+	size_t size = CHUNK; //initial size
 	size_t len = 0;
 	str = calloc(size, sizeof(char));
 	if(!str) return str; //returning in case of failing to allocate mem
 	while(EOF!=(ch=fgetc(fp)) && ch != '\n'){
 		str[len++]=ch;
 		if(len==size){
-			str = realloc(str, sizeof(char)*(size+=16));//allocating more mem for longer input
+			str = realloc(str, sizeof(char)*(size+=CHUNK));//allocating more mem for longer input
 			if(!str) return str;
 		}
 	}
