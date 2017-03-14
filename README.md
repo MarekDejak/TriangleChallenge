@@ -1,6 +1,6 @@
 # TriangleChallenge
 C code determining if the given triangle is scalene, isosceles or equilateral <br />
-Running "gcc triangles.c -o triangles" will compile. The output can be run by ./triangles
+Running "gcc triangles.c -o triangles" will compile in linux terminal. The output can be run by ./triangles
 <br /><br />
 - I have prepared the program for unspecified input by reading the input character by character with fgetc. Each time the number of characters exceeds the chunk size, more memory is allocated. This way an arbitrary number of characters can be processed
 - After the input is read with the getString function, the validation is performed in getSide using the strtold function, excluding all non-numeric and incorrect inputs.
